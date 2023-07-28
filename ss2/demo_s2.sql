@@ -20,8 +20,7 @@ create table student(
   class_id int, 
   `account` varchar(50) unique, 
   foreign key (class_id) references class(id), 
-  foreign key (`account`) references jame(`account`),
-  constraint CHK_student CHECK(`point`>5)
+  foreign key (`account`) references jame(`account`)
 );
 create table instructor(
   id int primary key auto_increment, 
@@ -138,6 +137,16 @@ where point=(select max(point)
 -- 1. Mục đích khi sử dụng INDEX? Một số hạn chế khi sử dụng INDEX?
 
 -- 2. Mục đích sử dụng VIEW? Chú pháp tạo VIEW?
+-- Một số mục đích chính của việc sử dụng view trong SQL bao gồm:
+-- 1. Trừu tượng hóa dữ liệu
+-- 2. Bảo mật dữ liệu
+-- 3. Tối ưu hóa hiệu suất
+-- 4. Tính nhất quán dữ liệu
+-- Chú pháp tạo view:
+-- CREATE VIEW view_name AS
+-- SELECT column1, column2.....
+-- FROM table_name
+-- WHERE [condition];
 
 -- 3. Sử dụng SP dùng để làm gì? Cú pháp tạo SP?
 
@@ -147,8 +156,46 @@ where point=(select max(point)
 
 -- Thực hiện các yêu cầu dưới đây:
 -- 1. Tạo 1 Store Procedure có tên findByName với tham số truyền vào là name để tìm các record 
+DELIMITER //
+create procedure findByName(in nameSearch varchar(50))
+Begin
+select * from student s
+where s.name like nameSearch;
+end//
+
+call findByName('hoang huu hoan');
+
 -- 2. Tạo 1 Trigger tự động tạo tài khoản jame trước khi thêm mới một học viên
--- 3. Viết function xếp loại học lưc theo point. >= 8 là loại giỏi, >= 6 là khá  còn lại là yếu,
+DELIMITER //
+create trigger before_add_newStudent
+before  insert on student
+for each row
+begin
+insert into jame(`account`,`password`)
+value (NEW.`account`,'Abcd1234!');
+end //
+
+DELIMITER ;
+
+drop trigger before_add_newStudent;
+-- 3. Viết function xếp loại học lưc theo point. >= 8 là loại giỏi, >= 6 là khá  còn lại là yếu
+DELIMITER //
+create function rank_point(`point` int)
+returns varchar(50)
+begin
+declare `rank` varchar(50);
+if(`point`>=8) then set `rank`='loại giỏi';
+elseif(`point`>=6) then set `rank`='loại khá';
+else set `rank`='loại yếu';
+end if;
+return (`rank`);
+end //
+
+DELIMITER ;
+
+select name,rank_point(point) from student;
+
+select * from student
 
 
 
