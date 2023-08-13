@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4b66f79a-c757-4738-b6b5-4d67f94bbc78" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../ss7_RWD/Exercise/Cartoon/Cartoon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss7_RWD/Exercise/Cartoon/Cartoon.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss7_RWD/Exercise/layout_RWD/layout_RWD.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss7_RWD/Exercise/layout_RWD/layout_RWD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8_Bootstrap/Exercise/Microsoft.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8_Bootstrap/Practice/Form_login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8_Bootstrap/Practice/Form_login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test_css/da.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_RWD/Exercise/Facebook/FB.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ss7_RWD/Exercise/Facebook/FB.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_RWD/Exercise/Facebook/Facebook.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ss7_RWD/Exercise/Facebook/Facebook.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2Tp91mpFW0xgkMw0NbUaSPb2ZTC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Codegym module2" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b66f79a-c757-4738-b6b5-4d67f94bbc78" name="Changes" comment="" />
+      <created>1691728943608</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1691728943608</updated>
+      <workItem from="1691728945441" duration="16000" />
+    </task>
+    <servers />
+  </component>
+</project>
