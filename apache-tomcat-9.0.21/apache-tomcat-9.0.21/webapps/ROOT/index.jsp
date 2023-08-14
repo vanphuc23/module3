@@ -16,6 +16,10 @@
         border: 1px solid black;
         border-collapse: collapse;
     }
+    img {
+        width: 100px;
+        height: 100px;
+    }
 </style>
 <body>
 <h1>Danh sách sinh viên</h1>
@@ -31,7 +35,7 @@
             <td><c:out value="${loop.count}"/></td>
             <td><c:out value="${student.name}"/></td>
             <td><c:out value="${student.score}"/></td>
-            <td><c:out value="${student.address}"/></td>
+            <td><img src="${student.address}" alt=""></td>
         </tr>
     </c:forEach>
 </table>
