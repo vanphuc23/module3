@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+.head {
+    position: relative;
+    height: 51px;
+}
+
 header {
     position: fixed;
     max-height: 56px;
@@ -101,6 +106,10 @@ header {
     border-radius: 100px;
 }
 
+.after {
+    position: relative;
+}
+
 section {
     position: fixed;
     top:51px;
@@ -155,14 +164,14 @@ article {
     left: 22%;
     width: 56%;
     float: left;
-    position: fixed;
+    position: relative;
 }
 
 .content {
     height: 100%;
     margin: 0 15%;
     background-color: white;
-    overflow: scroll;
+    position: absolute;
 }
 
 .content .content-list div {
@@ -275,6 +284,3 @@ aside:hover {
 .list-right {
     border-bottom: 1px solid lightgrey;
 }
-
-
-
