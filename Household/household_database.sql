@@ -27,12 +27,15 @@ values ('HK-112', 'Nguyễn Văn C', 2, '2019-08-10', '8 Hùng Vương');
 
 select * from household;
 
-select * from member;
+select * from member where household_id = 2;
 
 insert into member(name, household_id)
 values ('Nguyễn Văn B', 1), ('Nguyễn Văn C', 1), ('Nguyễn Văn D', 1);
 
 insert into member(name, household_id)
-value ('Nguyễn Văn D', 2);
+value ('Nguyễn Văn F', 2);
 
-select m.name, h.household_id from household h join member m on m.household_id = h.household_id where m.household_id=1;
+insert into member(name, household_id)
+value ('Nguyễn Văn E', 2);
+
+select m.name, h.* from household h join member m on m.household_id = h.household_id where m.household_id=1;

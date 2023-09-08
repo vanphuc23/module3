@@ -16,10 +16,11 @@ class varchar(25) not null
 );
 
 create table if not exists Book_card(
-book_card_id varchar(50) primary key unique,
+id int primary key auto_increment,
+book_card_id varchar(50) not null,
 book_id int not null,
 foreign key(book_id) references Book(book_id),
-student_id int not null,
+student_id int,
 foreign key(student_id) references Student(student_id),
 status bit not null,
 start_day date not null,
@@ -34,3 +35,8 @@ values('Nguyễn Văn C', '12A1'), ('Nguyễn Văn D', '11D6'), ('Nguyễn Văn 
 
 select * from Student;
 select * from Book;
+select * from Book_card;
+
+select bc.id, bc.book_card_id, b.book_id, b.book_name, b.author, b.quantity_book, s.student_name, s.class, bc.status, bc.start_day, bc.end_day 
+from Book b join Book_card bc on b.book_id = bc.book_id
+join Student s on s.student_id = bc.student_id where b.book_name like '%a%' and s.student_name like '%a%';

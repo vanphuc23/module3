@@ -18,4 +18,9 @@ public class BookService implements IBookService{
     public Book findall(int id) {
         return iBookRepository.findall(id);
     }
+
+    @Override
+    public void update(int id, int number) {
+        iBookRepository.update(id, number);
+    }
 }

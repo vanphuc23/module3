@@ -15,6 +15,20 @@ public class Student {
         this.student_name = student_name;
     }
 
+    public Student(int student_id, String student_name) {
+        this.student_id = student_id;
+        this.student_name = student_name;
+    }
+
+    public Student(int student_id) {
+        this.student_id = student_id;
+    }
+
+    public Student(String student_name, String student_class) {
+        this.student_name = student_name;
+        this.student_class = student_class;
+    }
+
     public int getStudent_id() {
         return student_id;
     }

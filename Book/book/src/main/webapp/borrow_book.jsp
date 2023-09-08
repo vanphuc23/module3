@@ -18,6 +18,23 @@
     small {
         color: red;
     }
+
+    .btnForm {
+        display: flex;
+    }
+
+    .a {
+        flex: 5;
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px;
+    }
+
+    .b {
+        flex: 5;
+        display: flex;
+        margin: 10px;
+    }
 </style>
 <body>
 <div class="container">
@@ -34,6 +51,8 @@
     <form action="/books?action=borrowBook" method="post">
         <table class="table table-hover">
             <tr>
+                <input type="hidden" name="book_id" value="${book.getBook_id()}">
+                <input type="hidden" name="quantity_book" value="${book.getQuantity_book()}">
                 <div class="form-group">
                     <label for="book_card_id">Mã mượn sách:</label>
                     <input type="text" class="form-control" id="book_card_id" name="book_card_id"
@@ -55,9 +74,9 @@
             <tr>
                 <label for="exampleFormControlSelect1">Tên học sinh:</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="student_name">
-                    <c:forEach items="${studentList}" var="studentList">
-                        <option>${studentList.getStudent_name()}</option>
-                    </c:forEach>
+                        <c:forEach items="${studentList}" var="studentList">
+                            <option value="${studentList.getStudent_id()}">${studentList.getStudent_name()}</option>
+                        </c:forEach>
                 </select>
             </tr>
             <tr>
@@ -80,9 +99,14 @@
                 </div>
             </tr>
             <tr>
-                <div style="margin-top: 10px">
-                    <button type="submit" class="btn btn-outline-primary">Mượn</button>
-                    <button type="button" class="btn btn-outline-primary">Hủy</button>
+                <div class="btnForm">
+                    <div class="a">
+                        <button type="submit" class="btn btn-outline-primary">Mượn</button>
+                    </div>
+
+                    <div class="b">
+                        <a href="/books" class="btn btn-outline-primary" role="button">Hủy</a>
+                    </div>
                 </div>
             </tr>
         </table>

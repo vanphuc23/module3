@@ -5,6 +5,7 @@ import Repository.BookCardRepository;
 import Repository.IBookCardRepository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BookCardService implements IBookCardService{
@@ -19,5 +20,25 @@ public class BookCardService implements IBookCardService{
             map.put("date", "Ngày trả sách không được phép trước ngày mượn sách");
         }
         return map;
+    }
+
+    @Override
+    public void listBookCard(Book_card bookCard) {
+         iBookCardRepository.listBookCard(bookCard);
+    }
+
+    @Override
+    public List<Book_card> displayBookCard() {
+        return iBookCardRepository.displayBookCard();
+    }
+
+    @Override
+    public void updateStatus(int id, boolean status) {
+        iBookCardRepository.updateStatus(id, status);
+    }
+
+    @Override
+    public List<Book_card> searchBookAndStudent(String book, String student) {
+        return iBookCardRepository.searchBookAndStudent(book, student);
     }
 }

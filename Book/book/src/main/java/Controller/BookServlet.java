@@ -33,8 +33,24 @@ public class BookServlet extends HttpServlet {
             case "showListBorrow":
                 showListBorrow(request, response);
                 break;
+            case "showListBorrowBook":
+                showListBorrowBook(request, response);
+                break;
             default:
                 ShowListBook(request, response);
+        }
+    }
+
+    private void showListBorrowBook(HttpServletRequest request, HttpServletResponse response) {
+        List<Book_card> list = iBookCardService.displayBookCard();
+        request.setAttribute("list", list);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("list_borrow_book.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -84,20 +100,65 @@ public class BookServlet extends HttpServlet {
             case "borrowBook":
                 borrowBook(request, response);
                 break;
+            case "giveBookBack":
+                giveBookBack(request, response);
+                break;
+            case "searchBookorStudent":
+                searchBookorStudent(request, response);
+                break;
+        }
+    }
+
+    private void searchBookorStudent(HttpServletRequest request, HttpServletResponse response) {
+        String search_book_name = request.getParameter("search_book_name");
+        String search_student_name = request.getParameter("search_student_name");
+        List<Book_card> list = iBookCardService.searchBookAndStudent(search_book_name, search_student_name);
+        request.setAttribute("list", list);
+        request.setAttribute("search_book_name", search_book_name);
+        request.setAttribute("search_student_name", search_student_name);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("list_borrow_book.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void giveBookBack(HttpServletRequest request, HttpServletResponse response) {
+        int book_id = Integer.parseInt(request.getParameter("book_id"));
+        int quantity_book = Integer.parseInt(request.getParameter("quantity_book"));
+        iBookService.update(book_id, quantity_book + 1);
+        int id = Integer.parseInt(request.getParameter("id"));
+        iBookCardService.updateStatus(id, false);
+        try {
+            response.sendRedirect("/books?action=showListBorrowBook");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     private void borrowBook(HttpServletRequest request, HttpServletResponse response) {
+        int book_id = Integer.parseInt(request.getParameter("book_id"));
+        int quantity_book = Integer.parseInt(request.getParameter("quantity_book"));
         String book_name = request.getParameter("book_name");
         String book_card_id = request.getParameter("book_card_id");
         LocalDate startDay = LocalDate.parse(request.getParameter("startday"));
         LocalDate endDay = LocalDate.parse(request.getParameter("endday"));
+        int student_id = Integer.parseInt(request.getParameter("student_name"));
+        Boolean status = true;
+        Book book2 = new Book(book_id);
+        Student student = new Student(student_id);
+        Book_card book_card = new Book_card(book_card_id, book2, student, status, startDay, endDay);
         Book_card bookCard = new Book_card(book_card_id, startDay, endDay);
         Map<String, String> map = iBookCardService.save(bookCard);
         List<Student> studentList = iStudentService.listStudent();
-        Book book = new Book(book_name);
+        Book book = new Book(book_id, book_name, quantity_book);
         try {
             if (map.isEmpty()) {
+                iBookService.update(book_id, quantity_book - 1);
+                iBookCardService.listBookCard(book_card);
                 response.sendRedirect("/books?ms=1");
             } else {
                 request.setAttribute("map", map);

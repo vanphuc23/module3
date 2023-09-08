@@ -9,6 +9,7 @@ import java.util.List;
 public class BookRepository implements IBookRepository{
     private final String SELECT_BOOK = "select * from Book";
     private final String BORROW_BOOK ="select book_name, book_id, quantity_book from Book where book_id = ?";
+    private final String UPDATE_BOOK = "update Book set quantity_book = ? where (book_id = ?)";
     @Override
     public List<Book> display() {
         Connection connection = BaseRepository.getConnection();
@@ -49,5 +50,18 @@ public class BookRepository implements IBookRepository{
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    @Override
+    public void update(int id, int number) {
+        Connection connection = BaseRepository.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_BOOK);
+            preparedStatement.setInt(1,number);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

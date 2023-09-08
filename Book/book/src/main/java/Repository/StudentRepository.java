@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRepository implements IStudentRepository{
-    private final String LIST_STUDENT = "select student_name from Student";
+    private final String LIST_STUDENT = "select student_id, student_name from Student";
 
     @Override
     public List<Student> listStudent() {
@@ -21,8 +21,9 @@ public class StudentRepository implements IStudentRepository{
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(LIST_STUDENT);
             while (resultSet.next()) {
+                int student_id = resultSet.getInt("student_id");
                 String student_name = resultSet.getString("student_name");
-                Student student = new Student(student_name);
+                Student student = new Student(student_id, student_name);
                 list.add(student);
             }
         } catch (SQLException e) {

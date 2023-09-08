@@ -28,6 +28,22 @@ public class Book {
         this.quantity_book = quantity_book;
     }
 
+    public Book(int book_id) {
+        this.book_id = book_id;
+    }
+
+    public Book(String book_name, String author) {
+        this.book_name = book_name;
+        this.author = author;
+    }
+
+    public Book(int book_id, String book_name, String author, int quantity_book) {
+        this.book_id = book_id;
+        this.book_name = book_name;
+        this.author = author;
+        this.quantity_book = quantity_book;
+    }
+
     public Book(String book_name) {
         this.book_name = book_name;
     }
